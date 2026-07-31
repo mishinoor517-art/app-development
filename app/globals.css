@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #050816;
+  color: #f5f3ff;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #7c3aed;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050816;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#7c3aed, #06b6d4);
+  border-radius: 8px;
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08];
+  }
+
+  .glass-card {
+    @apply glass rounded-xl2 shadow-glass;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent via-accent-soft to-secondary bg-clip-text text-transparent;
+  }
+
+  .btn-gradient {
+    @apply relative overflow-hidden rounded-full bg-gradient-to-r from-accent to-secondary
+           px-8 py-3.5 font-semibold text-white shadow-glow transition-transform duration-300;
+  }
+
+  .btn-outline {
+    @apply relative rounded-full border border-white/15 bg-white/[0.03] px-8 py-3.5
+           font-semibold text-white/90 backdrop-blur-xl transition-colors duration-300 hover:bg-white/[0.08];
+  }
+
+  .heading-underline {
+    @apply relative inline-block;
+  }
+
+  .heading-underline::after {
+    content: "";
+    @apply absolute -bottom-2 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-accent to-secondary transition-all duration-700;
+  }
+
+  .heading-underline.in-view::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
+  }
+}
