@@ -3,11 +3,26 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export default function FloatingParticles({ count = 20 }) {
-  const [particles, setParticles] = useState([]);
+type Particle = {
+  id: number;
+  left: string;
+  size: number;
+  color: string;
+  duration: number;
+  delay: number;
+};
+
+type FloatingParticlesProps = {
+  count?: number;
+};
+
+export default function FloatingParticles({
+  count = 20,
+}: FloatingParticlesProps) {
+  const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
-    const generatedParticles = Array.from(
+    const generatedParticles: Particle[] = Array.from(
       { length: count },
       (_, index) => ({
         id: index,
